@@ -1,0 +1,41 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<br>
+<div class="container">
+    <h3>{{ title }}</h3>
+     Фамилия: {{ user.last_name }}<br>
+     Имя: {{ user.first_name }}<br>
+     Электронная почта: {{ user.email }}<br>
+     Телефон: {{ user.phone }}<br>
+     Адрес: {{ user.address }}<br>
+     <a href="/edit/{{ user.id }}">Редактировать</a><br>
+     <br>
+    <h3>Товары которые вы заказывали:</h3>
+    <h5>За последнюю неделю:</h5>
+    <ul>
+        {% for product in products_week %}
+            <li>{{ product }}</li>
+        {% empty %}
+            <li>Нет товаров</li>
+        {% endfor %}
+    </ul>
+    <h5>За последний месяц:</h5>
+    <ul>
+        {% for product in products_month %}
+            <li>{{ product }}</li>
+        {% empty %}
+            <li>Нет товаров</li>
+        {% endfor %}
+    </ul>
+
+    <h5>За последний год:</h5>
+    <ul>
+        {% for product in products_year %}
+            <li>{{ product }}</li>
+        {% empty %}
+            <li>Нет товаров</li>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

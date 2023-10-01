@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<br>
+<div class="container">
+    <h3>Редактирование пользователя: {{ user.username }}</h3>
+    <br>
+    <form method="POST" action="{% url 'myapp:edit_user' user.id %}">
+        {% csrf_token %}
+        {% for f in form %}
+            <p>{{ f }}</p>
+            <div class="form-error">{{ f.errors }}</div>
+        {% endfor %}
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+{% endblock %}
