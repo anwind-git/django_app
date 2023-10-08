@@ -2,6 +2,9 @@ from django.contrib import admin
 from .models import Products, MenuCategories, Orders, OrderItem, UserProfile
 from django.utils.safestring import mark_safe
 
+admin.site.site_header = "Панель администратора"
+admin.site.site_title = "Панель администрирования"
+admin.site.index_title = "Добро пожаловать в админку"
 
 @admin.register(Products)
 class ProductstAdmin(admin.ModelAdmin):
@@ -38,8 +41,8 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Orders)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['paid', 'created']
-    list_filter = ['paid', 'created']
+    list_display = ['customer', 'created', 'paid', 'delivered']
+    list_filter = ['paid', 'created', 'delivered']
     inlines = [OrderItemInline]
     list_per_page = 15
 
